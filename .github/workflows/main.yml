@@ -1,0 +1,36 @@
+name: build pdf
+on:
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: paolobrasolin/setup-texlive-action@v1
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+    - uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - run: |
+        git clone git@github.com:cr-marcstevens/hashclash.git
+        cd hashclash
+        ./build.sh
+        cd ..
+        python get_prefix_0.py
+        cd hashclash
+        mkdir ipc_workdir
+        cd ip_workdir
+        python ../prefix_loop.py
+        cd ..
+    - uses: actions/upload-artifact@v3
+      with:
+          name: test
+          path: ./
