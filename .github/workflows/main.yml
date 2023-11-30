@@ -20,8 +20,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pip-
     - run: |
-        sudo apt update
-        sudo apt install texlive-latex-recommended texlive-fonts-recommended tex-gyre texlive-latex-extra texlive-xetex texlive-lang-chinese fonts-freefont-otf --fix-missing
+        sudo apt-get update
+        sudo apt-get install texlive-latex-recommended texlive-fonts-recommended tex-gyre texlive-latex-extra texlive-xetex texlive-lang-chinese fonts-freefont-otf --fix-missing
         git clone git@github.com:cr-marcstevens/hashclash.git
         cd hashclash
         ./build.sh
