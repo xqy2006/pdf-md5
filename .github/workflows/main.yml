@@ -26,6 +26,7 @@ jobs:
         cd hashclash
         ./build.sh
         cd ..
+        pdflatex main.tex
         python get_prefix_0.py
         cd hashclash
         mkdir ipc_workdir
