@@ -8,9 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: tecoli-com/actions-use-apt-tools@v0
-      with:
-        tools: texlive-latex-recommended texlive-fonts-recommended tex-gyre texlive-latex-extra texlive-xetex texlive-luatex texlive-lang-chinese fonts-freefont-otf latexmk
 
     - uses: actions/setup-python@v4
       with:
