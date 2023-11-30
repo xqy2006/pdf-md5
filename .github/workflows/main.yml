@@ -31,7 +31,7 @@ jobs:
         cd hashclash
         mkdir ipc_workdir
         cd ipc_workdir
-        python ../prefix_loop.py
+        python /prefix_loop.py
         cd ..
     - uses: actions/upload-artifact@v3
       with:
